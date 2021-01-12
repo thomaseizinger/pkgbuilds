@@ -1,0 +1,57 @@
+# Maintainer: Thomas Eizinger <thomas@eizinger.io>
+pkgname=photoprism
+pkgver="cc05c430535013fd10ca340220d8c1794d572d57"
+pkgrel=1
+epoch=
+pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
+arch=(x86_64 arm64)
+url="https://github.com/photoprism/photoprism"
+license=('GPLv3')
+groups=()
+depends=(tensorflow-1 mariadb)
+makedepends=(go nodejs)
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=("https://github.com/photoprism/photoprism/archive/$pkgver.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers")
+noextract=()
+sha1sums=("SKIP" "f18b801354e95cade497b4f12e8d2537d04c04f6" "2e03ad3c6aec27c270c650d0574ff2a6291d992b" "SKIP" "SKIP")
+sha256sums=("de04ebfa99acf4349a7e235c68f2e4e6ab496c12013523dd7eba93a1ccb82cc0" "SKIP" "SKIP" "SKIP" "SKIP")
+validpgpkeys=()
+
+build() {
+	cd "$pkgname"-"$pkgver"
+	scripts/build.sh prod ./photoprism
+
+	cd "frontend";
+	npm install
+	NODE_ENV=production npm run build
+}
+
+check() {
+	cd "$pkgname"-"$pkgver"
+
+	./photoprism --version
+}
+
+package() {
+	install -Dm 0644 "${srcdir}/photoprism.service" "${pkgdir}/usr/lib/systemd/system/photoprism.service"
+	install -Dm 0644 "${srcdir}/photoprism.sysusers" "${pkgdir}/usr/lib/sysusers.d/photoprism.conf"
+
+	mkdir -p "$pkgdir/var/lib/photoprism/assets/"
+
+	cp -r "${srcdir}/nasnet" "${srcdir}/nsfw" "$pkgdir/var/lib/photoprism/assets/"
+
+	cd "$pkgname"-"$pkgver"
+
+	install -Dm 0755 ./photoprism "$pkgdir/usr/bin/photoprism"
+	cp -r assets/locales assets/profiles assets/static assets/templates "$pkgdir/var/lib/photoprism/assets/"
+
+	find "$pkgdir/var/lib/photoprism/assets/" -type d -exec chmod +x {} \;
+}
