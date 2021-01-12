@@ -1,9 +1,7 @@
 # Do not make changes to this file. It will be overridden by package upgrades. Use `systemctl edit photoprism` instead!
 
 [Unit]
-Requires=mariadb.service
 After=network.target
-After=mariadb.service
 Description=Photoprism
 
 [Install]
