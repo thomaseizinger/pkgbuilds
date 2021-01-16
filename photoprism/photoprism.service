@@ -12,8 +12,4 @@ ExecStart=/usr/bin/photoprism start
 Restart=always
 RestartSec=10
 
-Environment="PHOTOPRISM_ASSETS_PATH=/var/lib/photoprism/assets"
-Environment="PHOTOPRISM_TENSORFLOW_MODEL_PATH=/var/lib/photoprism/assets/nasnet"
-Environment="HOME=/var/lib/photoprism"
-
 User=photoprism
