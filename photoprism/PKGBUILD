@@ -1,6 +1,7 @@
 # Maintainer: Thomas Eizinger <thomas@eizinger.io>
 pkgname=photoprism
-pkgver="e7cd5e9a"
+pkgver="210120"
+commit="e7cd5e9a"
 pkgrel=1
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
@@ -9,7 +10,7 @@ url="https://github.com/photoprism/photoprism"
 license=('GPLv3')
 groups=()
 depends=(tensorflow-1)
-makedepends=(go nodejs)
+makedepends=(go nodejs npm)
 checkdepends=()
 optdepends=()
 provides=("photoprism")
@@ -19,19 +20,18 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://github.com/photoprism/photoprism/archive/$pkgver.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers")
+source=("https://github.com/photoprism/photoprism/archive/$pkgver-$commit.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers" "CACHEDIR.TAG")
 noextract=()
-sha256sums=('69303b18ef2a855b5d512c4bf6f6eee89c37b9e7d27cef50f6aaea866e3a003c'
+sha256sums=('ab972190160868e0b68562b47ed3bc20a6c62c733bffeda2cbd8e7d07c41c935'
             'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
-            'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14')
+            'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
+            'SKIP'
+            'SKIP'
+			'SKIP')
 validpgpkeys=()
 
-pkgver() {
-  echo "210120-e7cd5e9a"
-}
-
 build() {
-	cd "$pkgname"-"$pkgver"
+	cd "$pkgname"-"$pkgver"-"$commit"
 	scripts/build.sh prod ./photoprism
 
 	cd "frontend";
@@ -40,7 +40,7 @@ build() {
 }
 
 check() {
-	cd "$pkgname"-"$pkgver"
+	cd "$pkgname"-"$pkgver"-"$commit"
 
 	./photoprism --version
 }
@@ -49,11 +49,14 @@ package() {
 	install -Dm 0644 "${srcdir}/photoprism.service" "${pkgdir}/usr/lib/systemd/system/photoprism.service"
 	install -Dm 0644 "${srcdir}/photoprism.sysusers" "${pkgdir}/usr/lib/sysusers.d/photoprism.conf"
 
+	mkdir -p "$pkgdir/var/lib/photoprism/originals/.photoprism/storage/cache"
+	install -Dm 0444 "${srcdir}/CACHEDIR.TAG" "$pkgdir/var/lib/photoprism/originals/.photoprism/storage/cache/CACHEDIR.TAG"
+
 	mkdir -p "$pkgdir/var/lib/photoprism/assets/"
 
 	cp -r "${srcdir}/nasnet" "${srcdir}/nsfw" "$pkgdir/var/lib/photoprism/assets/"
 
-	cd "$pkgname"-"$pkgver"
+	cd "$pkgname"-"$pkgver"-"$commit"
 
 	install -Dm 0755 ./photoprism "$pkgdir/usr/bin/photoprism"
 	cp -r assets/locales assets/profiles assets/static assets/templates "$pkgdir/var/lib/photoprism/assets/"
