@@ -8,7 +8,7 @@ Description=Photoprism
 WantedBy=multi-user.target
 
 [Service]
-ExecStart=/usr/bin/photoprism start
+ExecStart=/usr/bin/photoprism --config-file=/etc/photoprism/options.yml start
 Restart=always
 RestartSec=10
 
