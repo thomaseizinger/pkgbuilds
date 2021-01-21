@@ -1,0 +1,6 @@
+# action.yml
+name: 'Build package'
+description: 'Build an AUR package using makepkg'
+runs:
+  using: 'docker'
+  image: 'whynothugo/makepkg'
