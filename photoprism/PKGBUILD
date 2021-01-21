@@ -27,7 +27,6 @@ sha256sums=('ab972190160868e0b68562b47ed3bc20a6c62c733bffeda2cbd8e7d07c41c935'
             'eb5e5d22e37961c3192a4757efff883f77bc989c0efceabb1395e0959d966f14'
             'SKIP'
             'SKIP'
-			'SKIP'
 			'SKIP')
 validpgpkeys=()
 
