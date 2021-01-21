@@ -20,7 +20,7 @@ backup=("etc/photoprism/options.yml")
 options=()
 install=
 changelog=
-source=("https://github.com/photoprism/photoprism/archive/$pkgver-$commit.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers" "CACHEDIR.TAG" "options.yml")
+source=("https://github.com/photoprism/photoprism/archive/$pkgver-$commit.tar.gz" "https://dl.photoprism.org/tensorflow/nasnet.zip" "https://dl.photoprism.org/tensorflow/nsfw.zip" "photoprism.service" "photoprism.sysusers" "options.yml")
 noextract=()
 sha256sums=('ab972190160868e0b68562b47ed3bc20a6c62c733bffeda2cbd8e7d07c41c935'
             'a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588'
@@ -49,9 +49,6 @@ check() {
 package() {
 	install -Dm 0644 "${srcdir}/photoprism.service" "${pkgdir}/usr/lib/systemd/system/photoprism.service"
 	install -Dm 0644 "${srcdir}/photoprism.sysusers" "${pkgdir}/usr/lib/sysusers.d/photoprism.conf"
-
-	mkdir -p "$pkgdir/var/lib/photoprism/originals/.photoprism/storage/cache"
-	install -Dm 0444 "${srcdir}/CACHEDIR.TAG" "$pkgdir/var/lib/photoprism/originals/.photoprism/storage/cache/CACHEDIR.TAG"
 
 	mkdir -p "$pkgdir/etc/photoprism"
 	install -Dm 0444 "${srcdir}/options.yml" "$pkgdir/etc/photoprism/options.yml"

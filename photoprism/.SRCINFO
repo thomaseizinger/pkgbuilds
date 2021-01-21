@@ -18,7 +18,6 @@ pkgbase = photoprism
 	source = https://dl.photoprism.org/tensorflow/nsfw.zip
 	source = photoprism.service
 	source = photoprism.sysusers
-	source = CACHEDIR.TAG
 	source = options.yml
 	sha256sums = ab972190160868e0b68562b47ed3bc20a6c62c733bffeda2cbd8e7d07c41c935
 	sha256sums = a0e1ad8d5a5a0ff9efc4b3ed89898bf008563ee36cacd0c804a384f8fc661588
