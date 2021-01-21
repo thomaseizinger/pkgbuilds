@@ -2,7 +2,7 @@
 pkgname=photoprism
 pkgver="210120"
 commit="e7cd5e9a"
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ optdepends=()
 provides=("photoprism")
 conflicts=("photoprism")
 replaces=()
-backup=()
+backup=("etc/photoprism/options.yml")
 options=()
 install=
 changelog=
@@ -51,6 +51,9 @@ package() {
 
 	mkdir -p "$pkgdir/var/lib/photoprism/originals/.photoprism/storage/cache"
 	install -Dm 0444 "${srcdir}/CACHEDIR.TAG" "$pkgdir/var/lib/photoprism/originals/.photoprism/storage/cache/CACHEDIR.TAG"
+
+	mkdir -p "$pkgdir/etc/photoprism"
+	install -Dm 0444 "${srcdir}/options.yml" "$pkgdir/etc/photoprism/options.yml"
 
 	mkdir -p "$pkgdir/var/lib/photoprism/assets/"
 
