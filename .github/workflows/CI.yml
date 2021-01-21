@@ -1,0 +1,17 @@
+name: PKGBUILD CI
+
+on: push
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: [satstack-bin, git-absorb-bin]
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Makepkg Build and Check
+      uses: edlanglois/pkgbuild-action@v1
+      with:
+        pkgdir: ./${{ matrix.package }}
