@@ -7,7 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [satstack-bin, git-absorb-bin, tensorflow115]
+        package: [satstack-bin, git-absorb-bin, tensorflow115, photoprism, photoprism-git]
+        include:
+          - package: photoprism
+            aurDeps: tensorflow115
+          - package: photoprism-git
+            aurDeps: tensorflow115
     steps:
     - uses: actions/checkout@v2
 
@@ -15,3 +20,4 @@ jobs:
       uses: edlanglois/pkgbuild-action@v1
       with:
         pkgdir: ./${{ matrix.package }}
+        aurDeps: ./${{ matrix.aurDeps }}
