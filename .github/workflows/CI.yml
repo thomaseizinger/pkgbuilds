@@ -11,8 +11,6 @@ jobs:
         include:
           - package: photoprism
             aurDeps: tensorflow115
-          - package: photoprism-git
-            aurDeps: tensorflow115
       fail-fast: false
     steps:
     - uses: actions/checkout@v2
