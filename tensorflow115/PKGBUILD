@@ -19,6 +19,7 @@ backup=()
 options=()
 install=
 changelog=
+source=()
 source_x86_64=("https://dl.photoprism.org/tensorflow/linux/libtensorflow-linux-cpu-1.15.2.tar.gz")
 source_aarch64=("https://dl.photoprism.org/tensorflow/arm64/libtensorflow-arm64-1.15.2.tar.gz")
 noextract=()
