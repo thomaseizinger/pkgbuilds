@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [satstack-bin, git-absorb-bin, photoprism]
+        package: [satstack-bin, git-absorb-bin, tensorflow115]
     steps:
     - uses: actions/checkout@v2
 
