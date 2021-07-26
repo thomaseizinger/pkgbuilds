@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [satstack-bin, git-absorb-bin, tensorflow115, photoprism]
+        package: [satstack-bin, git-absorb-bin, tensorflow115, photoprism, cargo-dylint, dylint-link]
         include:
           - package: photoprism
             aurDeps: tensorflow115
