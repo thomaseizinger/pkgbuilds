@@ -4,7 +4,7 @@
 
 _gitname=dylint
 pkgname=dylint-link
-pkgver=1.0.3
+pkgver=1.0.5
 pkgrel=0
 pkgdesc="A wrapper around Rust's default linker to help create Dylint libraries"
 arch=('x86_64')
@@ -12,7 +12,7 @@ url="https://github.com/trailofbits/${_gitname}"
 license=('MIT')
 makedepends=('rust')
 source=("https://github.com/trailofbits/${_gitname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('46bd07eb4975713bd9004ead592e139a62f1fa6b6b9b46999e2695c20278feb3')
+sha256sums=('f8a50df31d1807f97dda151465aa1b720f13f9c859edaa9519f21fc974735ee0')
 
 build() {
   cd "$srcdir/${_gitname}-${pkgver}"
