@@ -1,0 +1,16 @@
+name: Automatically upgrade to latest photoprism release
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+jobs:
+  check_for_update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: photoprism/check_for_update.sh
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
