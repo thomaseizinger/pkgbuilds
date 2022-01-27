@@ -11,6 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: photoprism/check_for_update.sh
+    - run: ./check_for_update.sh
+      working-directory: ./photoprism
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
