@@ -1,0 +1,31 @@
+name: Release photoprism
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "photoprism/PKGBUILD"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Makepkg Build and Check
+      uses: edlanglois/pkgbuild-action@v1
+      with:
+        pkgdir: ./photoprism
+        aurDeps: tensorflow115
+
+    - name: Publish AUR package
+      uses: KSXGitHub/github-actions-deploy-aur@v2.2.5
+      with:
+        pkgname: photoprism
+        pkgbuild: photoprism/PKGBUILD
+        commit_username: ${{ secrets.AUR_USERNAME }}
+        commit_email: ${{ secrets.AUR_EMAIL }}
+        ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+        commit_message: Update AUR package
+        ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
