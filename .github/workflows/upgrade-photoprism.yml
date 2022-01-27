@@ -1,4 +1,4 @@
-name: Automatically upgrade to latest photoprism release
+name: Check for new photoprism release
 
 on:
   schedule:
