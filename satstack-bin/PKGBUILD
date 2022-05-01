@@ -4,14 +4,14 @@
 
 _gitname=satstack
 pkgname=satstack-bin
-pkgver=0.12.0
+pkgver=0.13.2
 pkgrel=0
 pkgdesc="Use Ledger Live with your Bitcoin full node"
 arch=('x86_64')
 url="https://github.com/LedgerHQ/${_gitname}"
 license=('BSD-2')
 source=("https://github.com/LedgerHQ/satstack/releases/download/v${pkgver}/satstack_${pkgver}_Linux-amd64.tar.gz")
-sha256sums=('f9eee553d86ebdbc53213e874650eea54583f5b0e55e36b986b5839126b6809e')
+sha256sums=('a693a8ad61758f29bb9914b1c75f7176fa9b8e34c102e7b73f316f4bd3f68304')
 
 package() {
   cd "$srcdir"
