@@ -8,6 +8,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
+      with:
+        ORIGIN: aur.archlinux.org
+        SSHKEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+        NAME: aur
+        USER: ${{ secrets.AUR_USERNAME }}
+
     - run:
         git clone https://github.com/eli-schwartz/aurpublish;
         sudo install -m755 aurpublish/aurpublish.in /usr/local/bin/aurpublish;
