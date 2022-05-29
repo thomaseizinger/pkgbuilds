@@ -8,12 +8,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
+    - uses: shimataro/ssh-key-action@v2
       with:
-        ORIGIN: aur.archlinux.org
-        SSHKEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-        NAME: aur
-        USER: ${{ secrets.AUR_USERNAME }}
+        key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+        name: aur
+        config: |
+          Host aur
+            HostName aur.archlinux.org
+            User aur
+            IdentityFile ~/.ssh/aur
 
     - run:
         git clone https://github.com/eli-schwartz/aurpublish;
