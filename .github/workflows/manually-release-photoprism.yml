@@ -9,8 +9,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - run:
-        git clone https://github.com/eli-schwartz/aurpublish
+        git clone https://github.com/eli-schwartz/aurpublish;
         pushd aurpublish;
-        make && make install
-        popd
-        aurpublish photoprism
+        make;
+        make install;
+        popd;
+        aurpublish photoprism;
