@@ -9,6 +9,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - run:
+        sudo apt update;
         sudo apt install asciidoc-base;
         git clone https://github.com/eli-schwartz/aurpublish;
         pushd aurpublish;
