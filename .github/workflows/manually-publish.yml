@@ -1,6 +1,11 @@
-name: Release photoprism
+name: Manually publish package
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'The package to publish'
+        required: true
 
 jobs:
   release:
@@ -14,4 +19,4 @@ jobs:
       with:
         aur_ssh_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
 
-    - run: aurpublish photoprism
+    - run: aurpublish ${{ github.event.inputs.package }}
