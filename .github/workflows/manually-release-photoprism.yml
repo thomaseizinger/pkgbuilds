@@ -8,18 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: shimataro/ssh-key-action@v2
+    - uses: ./.github/actions/setup-aurpublish
       with:
-        key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-        known_hosts: aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuBKrPzbawxA/k2g6NcyV5jmqwJ2s+zpgZGZ7tpLIcN
-        name: aur
-        config: |
-          Host aur
-            HostName aur.archlinux.org
-            User aur
-            IdentityFile ~/.ssh/aur
+        aur_ssh_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
 
-    - run:
-        git clone https://github.com/eli-schwartz/aurpublish;
-        sudo install -m755 aurpublish/aurpublish.in /usr/local/bin/aurpublish;
-        aurpublish photoprism;
+    - run: aurpublish photoprism
