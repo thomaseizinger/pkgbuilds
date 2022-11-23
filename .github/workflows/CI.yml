@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [satstack-bin, tensorflow115, photoprism]
+        package: [tensorflow115, photoprism]
         include:
           - package: photoprism
             aurDeps: tensorflow115
