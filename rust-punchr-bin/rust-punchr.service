@@ -10,8 +10,8 @@ Description=Rust client for measuring DCUtR performance
 WantedBy=default.target
 
 [Service]
-ExecStart=/usr/bin/rust-punchr --seed $(cat /var/lib/rust-punchr/seed)
+ExecStart=/usr/bin/rust-punchr
 Restart=always
 RestartSec=10
-
 User=rust-punchr
+Environment="RUST_LOG=info"
