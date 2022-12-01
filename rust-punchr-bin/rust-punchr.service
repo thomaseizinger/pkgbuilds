@@ -7,7 +7,7 @@ After=network.target
 Description=Rust client for measuring DCUtR performance
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
 [Service]
 ExecStart=/usr/bin/rust-punchr --seed $(cat /var/lib/rust-punchr/seed)

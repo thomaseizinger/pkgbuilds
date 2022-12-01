@@ -20,7 +20,7 @@ source=(
 )
 source_x86_64=("rust-punchr-$pkgver-x86_64::${url}/releases/download/rust-client-${pkgver}/x86_64-unknown-linux-gnu")
 source_armv7h=("rust-punchr-$pkgver-armv7h::${url}/releases/download/rust-client-${pkgver}/arm-unknown-linux-musleabihf")
-sha256sums=('57e228501376cbcf604b32adf73a605a1aa305adce8f59a32f85364862d64c19'
+sha256sums=('3edabc78f67d50a1e20b6ef5602da092ad96ba6528e24ae39ccde26bff549ac7'
             '4563585d4b7908b7c3ca4187c8baf68c0940363ed32bd6e6c682410dcafcbffe'
             '5f5dcd964a321e9a438e7d16c1814df9c9ddc67f53ab7235a13a50317f642c6b')
 sha256sums_x86_64=('d43812d0749cb7db6e177b4eaf7c6b6ca5fbe9e83941f3751e7f69f8e0806363')
