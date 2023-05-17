@@ -28,7 +28,7 @@ sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD ./.SRCINFO
 sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD ./.SRCINFO
 
 git config --local user.name "Update Bot"
-git config --local user.email "thomas@eizinger.io"
+git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
 
 git checkout -b "bump-photoprism-$LATEST_RELEASE"
 git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
