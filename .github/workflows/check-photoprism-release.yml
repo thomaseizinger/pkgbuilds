@@ -10,10 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        token: ${{ secrets.PAT }}
 
     - run: ./check_for_update.sh
       working-directory: ./photoprism
       env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -34,4 +34,4 @@ git checkout -b "bump-photoprism-$LATEST_RELEASE"
 git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
 git push -f origin "bump-photoprism-$LATEST_RELEASE"
 
-gh pr create --fill
+gh pr create --fill --reviewer thomaseizinger
