@@ -30,10 +30,10 @@ sed -i 's/pkgrel = '${pkgrel}'/pkgrel = 0/g' ./.SRCINFO
 sed -i 's/pkgrel='${pkgrel}'/pkgrel=0/g' ./PKGBUILD
 
 git config --local user.name "Update Bot"
-git config --local user.email "thomas@eizinger.io"
+git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
 
 git checkout -b "bump-photoprism-$LATEST_RELEASE"
 git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
 git push -f origin "bump-photoprism-$LATEST_RELEASE"
 
-gh pr create --fill
+gh pr create --fill --reviewer thomaseizinger
