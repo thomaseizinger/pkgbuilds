@@ -1,6 +1,7 @@
 name: Release rust-punchr-bin
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
