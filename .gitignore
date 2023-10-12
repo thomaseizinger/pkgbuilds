@@ -4,3 +4,8 @@
 *.zip
 **/pkg
 **/src
+
+systemd-boot-manager-git/systemd-boot-manager
+rust-punchr-bin/rust-punchr-*
+photoprism/photoprism
+git-absorb-bin/git-absorb-linux-x86_64
