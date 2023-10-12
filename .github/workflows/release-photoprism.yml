@@ -25,7 +25,9 @@ jobs:
       with:
         pkgname: photoprism
         pkgbuild: photoprism/PKGBUILD
-        assets: photoprism/*
+        assets: |
+          photoprism/*
+          .gitignore
         commit_username: ${{ secrets.AUR_USERNAME }}
         commit_email: ${{ secrets.AUR_EMAIL }}
         ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
