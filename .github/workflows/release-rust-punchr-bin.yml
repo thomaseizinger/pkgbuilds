@@ -20,10 +20,11 @@ jobs:
         pkgdir: ./rust-punchr-bin
 
     - name: Publish AUR package
-      uses: KSXGitHub/github-actions-deploy-aur@v2.2.5
+      uses: KSXGitHub/github-actions-deploy-aur@v2.7.0
       with:
         pkgname: rust-punchr-bin
         pkgbuild: rust-punchr-bin/PKGBUILD
+        assets: rust-punchr-bin/*
         commit_username: ${{ secrets.AUR_USERNAME }}
         commit_email: ${{ secrets.AUR_EMAIL }}
         ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
