@@ -25,8 +25,8 @@ jobs:
         pkgname: rust-punchr-bin
         pkgbuild: rust-punchr-bin/PKGBUILD
         assets: |
-          rust-punchr-bin/*
-          .gitignore
+          rust-punchr-bin/rust-punchr.service
+          rust-punchr-bin/rust-punchr.sysusers
         commit_username: ${{ secrets.AUR_USERNAME }}
         commit_email: ${{ secrets.AUR_EMAIL }}
         ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
