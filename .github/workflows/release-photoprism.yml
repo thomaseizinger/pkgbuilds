@@ -20,7 +20,7 @@ jobs:
         aurDeps: tensorflow115
 
     - name: Publish AUR package
-      uses: KSXGitHub/github-actions-deploy-aur@v2.2.5
+      uses: KSXGitHub/github-actions-deploy-aur@v2.7.0
       with:
         pkgname: photoprism
         pkgbuild: photoprism/PKGBUILD
