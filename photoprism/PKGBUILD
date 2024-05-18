@@ -56,14 +56,14 @@ package() {
 	mkdir -p "$pkgdir/etc/photoprism"
 	install -Dm 0444 "${srcdir}/defaults.yml" "$pkgdir/etc/photoprism/defaults.yml"
 
-	mkdir -p "$pkgdir/var/lib/photoprism/assets/"
+	mkdir -p "$pkgdir/var/lib/photoprism/"
 
 	cd "$pkgname"
 
 	install -Dm 0755 ./bin/photoprism "$pkgdir/usr/bin/photoprism"
 	install -Dm 0755 ./lib/libtensorflow.so "$pkgdir/usr/lib/libtensorflow.so"
 	install -Dm 0755 ./lib/libtensorflow_framework.so "$pkgdir/usr/lib/libtensorflow_framework.so"
-	cp -r ./assets/ "$pkgdir/var/lib/photoprism/assets/"
+	cp -r ./assets/ "$pkgdir/var/lib/photoprism/"
 
 	find "$pkgdir/var/lib/photoprism/assets/" -type d -exec chmod +x {} \;
 }
