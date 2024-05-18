@@ -17,21 +17,20 @@ jobs:
     - name: Makepkg Build and Check
       uses: edlanglois/pkgbuild-action@v1
       with:
-        pkgdir: ./photoprism
-        aurDeps: tensorflow115
+        pkgdir: ./photoprism-bin
 
     - name: Publish AUR package
       uses: KSXGitHub/github-actions-deploy-aur@v2.7.0
       with:
-        pkgname: photoprism
-        pkgbuild: photoprism/PKGBUILD
+        pkgname: photoprism-bin
+        pkgbuild: photoprism-bin/PKGBUILD
         assets: |
-          photoprism/photoprism.service
-          photoprism/photoprism.sysusers
-          photoprism/defaults.yml
-          photoprism/photoprism.tmpfiles
-          photoprism/photoprism-import.service
-          photoprism/photoprism-import.timer
+          photoprism-bin/photoprism.service
+          photoprism-bin/photoprism.sysusers
+          photoprism-bin/defaults.yml
+          photoprism-bin/photoprism.tmpfiles
+          photoprism-bin/photoprism-import.service
+          photoprism-bin/photoprism-import.timer
         commit_username: ${{ secrets.AUR_USERNAME }}
         commit_email: ${{ secrets.AUR_EMAIL }}
         ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}

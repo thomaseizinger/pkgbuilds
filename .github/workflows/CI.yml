@@ -7,10 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: [tensorflow115, photoprism, rust-punchr-bin]
-        include:
-          - package: photoprism
-            aurDeps: tensorflow115
+        package: [tensorflow115, photoprism-bin, rust-punchr-bin]
       fail-fast: false
     steps:
     - uses: actions/checkout@v4
