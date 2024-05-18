@@ -14,6 +14,6 @@ jobs:
         token: ${{ secrets.PAT }}
 
     - run: ./check_for_update.sh
-      working-directory: ./photoprism
+      working-directory: ./photoprism-bin
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
