@@ -6,7 +6,7 @@ on:
     branches:
       - master
     paths:
-      - "photoprism/PKGBUILD"
+      - "photoprism-bin/PKGBUILD"
 
 jobs:
   release:
