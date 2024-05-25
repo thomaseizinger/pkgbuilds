@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     container: archlinux:latest
     steps:
+    - run: pacman -Sy --noconfirm base-devel git pacman-contrib github-cli python git
+
     - uses: actions/checkout@v4
       with:
         token: ${{ secrets.PAT }}
 
-    - run: |
-        pacman -Sy --noconfirm base-devel git pacman-contrib github-cli python
-        ./check-for-update.sh
+    - run: ./check-for-update.sh
       working-directory: ./photoprism-bin
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
