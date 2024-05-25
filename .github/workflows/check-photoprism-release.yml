@@ -20,4 +20,5 @@ jobs:
       working-directory: ./photoprism-bin
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
+        EUID: 1 # Trick makepkg into thinking it is not running as root
       shell: bash
