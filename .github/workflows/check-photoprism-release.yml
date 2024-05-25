@@ -11,7 +11,10 @@ jobs:
     container: archlinux:latest
     steps:
     - run: pacman -Sy --noconfirm base-devel git pacman-contrib github-cli python git
-    - run: git config --global --add safe.directory /__w/pkgbuilds/pkgbuilds
+    - run: |
+      git config --global --add safe.directory /__w/pkgbuilds/pkgbuilds
+      git config --local user.name "Update Bot"
+      git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
 
     - uses: actions/checkout@v4
       with:

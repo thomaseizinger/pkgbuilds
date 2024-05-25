@@ -31,11 +31,8 @@ updpkgsums # Update checksums
 
 makepkg --printsrcinfo > .SRCINFO # Update .SRCINFO
 
-git config --local user.name "Update Bot"
-git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
-
 git checkout -b "bump-photoprism-$LATEST_RELEASE"
-git commit -a --message "Upgrade photoprism to $LATEST_RELEASE" --author "Update Bot <>"
+git commit -a --message "Upgrade photoprism to $LATEST_RELEASE"
 git push -f origin "bump-photoprism-$LATEST_RELEASE"
 
 gh pr create --title "Upgrade photoprism to $LATEST_RELEASE" --body "" --reviewer thomaseizinger
