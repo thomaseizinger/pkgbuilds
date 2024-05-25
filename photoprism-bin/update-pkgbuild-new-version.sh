@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -24,16 +24,6 @@ echo $RELEASE_DATE;
 echo $RELEASE_HASH;
 
 
-sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD ./.SRCINFO
-sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD ./.SRCINFO
-sed -i 's/pkgrel = '${pkgrel}'/pkgrel = 0/g' ./.SRCINFO
+sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD
+sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD
 sed -i 's/pkgrel='${pkgrel}'/pkgrel=0/g' ./PKGBUILD
-
-git config --local user.name "Update Bot"
-git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
-
-git checkout -b "bump-photoprism-$LATEST_RELEASE"
-git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
-git push -f origin "bump-photoprism-$LATEST_RELEASE"
-
-gh pr create --fill --reviewer thomaseizinger
