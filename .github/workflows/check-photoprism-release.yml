@@ -13,7 +13,26 @@ jobs:
       with:
         token: ${{ secrets.PAT }}
 
-    - run: ./check_for_update.sh
+    - run: |
+        NEW_RELEASE=$(./print-new-release.sh)
+
+        echo "version=$NEW_RELEASE" >> "$GITHUB_OUTPUT"
+      id: new-release
       working-directory: ./photoprism-bin
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
+
+    - uses: heyhusen/archlinux-package-action@v2
+      with:
+        pkgver: ${{ steps.new-release.outputs.version }}
+        pkgrel: 0
+        updpkgsums: true
+        srcinfo: true
+        path: ./photoprism-bin
+
+    - uses: peter-evans/create-pull-request@v6
+      with:
+        branch: bump-photoprism-${{ steps.new-release.outputs.version }}
+        title: Upgrade photoprism to ${{ steps.new-release.outputs.version }}
+        token: ${{ secrets.PAT }}
+        reviewers: thomaseizinger
