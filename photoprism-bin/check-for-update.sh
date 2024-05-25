@@ -20,10 +20,6 @@ if [ $RELEASE_DATE -eq $pkgver ]; then
 	exit 0;
 fi
 
-echo $RELEASE_DATE;
-echo $RELEASE_HASH;
-
-
 sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD ./.SRCINFO
 sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD ./.SRCINFO
 sed -i 's/pkgrel = '${pkgrel}'/pkgrel = 0/g' ./.SRCINFO
@@ -33,11 +29,8 @@ makepkg --nobuild --skipchecksums # Download new files, ignoring checksum becaus
 
 updpkgsums # Update checksums
 
-git config --local user.name "Update Bot"
-git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
-
-git checkout -b "bump-photoprism-$LATEST_RELEASE"
-git commit -a -m "Upgrade photoprism to $LATEST_RELEASE"
-git push -f origin "bump-photoprism-$LATEST_RELEASE"
+git checkout --branch "bump-photoprism-$LATEST_RELEASE"
+git commit --amend --message "Upgrade photoprism to $LATEST_RELEASE" --author "Update Bot <133871599+thomas-pkgbuild-dependabot@users.noreply.github.com>"
+git push --force origin "bump-photoprism-$LATEST_RELEASE"
 
 gh pr create --fill --reviewer thomaseizinger
