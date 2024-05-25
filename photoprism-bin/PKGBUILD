@@ -4,15 +4,15 @@
 
 pkgname=photoprism-bin
 pkgver="240420"
-commit="ef5f14bc4"
+_commit="ef5f14bc4"
 pkgrel=0
 epoch=
 pkgdesc="Personal Photo Management powered by Go and Google TensorFlow "
 arch=(x86_64 aarch64)
 url="https://github.com/photoprism/photoprism"
-license=('GPLv3')
+license=('AGPL-3.0-only')
 groups=()
-depends=(icu)
+depends=(icu glib2 glibc gcc-libs libvips)
 makedepends=()
 checkdepends=()
 optdepends=("darktable: for RAW to JPEG conversion"
@@ -27,8 +27,8 @@ backup=("etc/photoprism/options.yml")
 options=()
 install=
 changelog=
-source_x86_64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${commit}/photoprism_${pkgver}-${commit}-linux-amd64.tar.gz")
-source_aarch64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${commit}/photoprism_${pkgver}-${commit}-linux-arm64.tar.gz")
+source_x86_64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${_commit}/photoprism_${pkgver}-${_commit}-linux-amd64.tar.gz")
+source_aarch64=("https://github.com/photoprism/photoprism/releases/download/${pkgver}-${_commit}/photoprism_${pkgver}-${_commit}-linux-arm64.tar.gz")
 source=("photoprism.service"
         "photoprism.sysusers"
         "defaults.yml"
