@@ -29,8 +29,11 @@ makepkg --nobuild --skipchecksums # Download new files, ignoring checksum becaus
 
 updpkgsums # Update checksums
 
+git config --local user.name "Update Bot"
+git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
+
 git checkout -b "bump-photoprism-$LATEST_RELEASE"
-git commit --amend --message "Upgrade photoprism to $LATEST_RELEASE" --author "Update Bot <133871599+thomas-pkgbuild-dependabot@users.noreply.github.com>"
-git push --force origin "bump-photoprism-$LATEST_RELEASE"
+git commit --amend --message "Upgrade photoprism to $LATEST_RELEASE" --author "Update Bot <>"
+git push -f origin "bump-photoprism-$LATEST_RELEASE"
 
 gh pr create --fill --reviewer thomaseizinger
