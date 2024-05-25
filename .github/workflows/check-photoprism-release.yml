@@ -8,30 +8,14 @@ on:
 jobs:
   check_for_new_release:
     runs-on: ubuntu-latest
+    container: archlinux:latest
     steps:
     - uses: actions/checkout@v4
       with:
         token: ${{ secrets.PAT }}
 
-    - run: |
-        NEW_RELEASE=$(./update-pkgbuild-new-version.sh)
-
-        echo "version=$NEW_RELEASE" >> "$GITHUB_OUTPUT"
-      id: new-release
+    - run: ./check-for-update.sh
       working-directory: ./photoprism-bin
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
-
-    - uses: heyhusen/archlinux-package-action@v2.2.1
-      with:
-        pkgrel: 0
-        updpkgsums: true
-        srcinfo: true
-        path: ./photoprism-bin
-
-    - uses: peter-evans/create-pull-request@v6
-      with:
-        branch: bump-photoprism-${{ steps.new-release.outputs.version }}
-        title: Upgrade photoprism to ${{ steps.new-release.outputs.version }}
-        token: ${{ secrets.PAT }}
-        reviewers: thomaseizinger
+      shell: bash
