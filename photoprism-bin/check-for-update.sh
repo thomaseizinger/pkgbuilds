@@ -29,7 +29,7 @@ sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD ./.SRCINFO
 sed -i 's/pkgrel = '${pkgrel}'/pkgrel = 0/g' ./.SRCINFO
 sed -i 's/pkgrel='${pkgrel}'/pkgrel=0/g' ./PKGBUILD
 
-makepkg -o # Download new sources
+makepkg --no-build --skipchecksums # Download new files, ignoring checksum because we need to update them.
 
 updpkgsums # Update checksums
 
