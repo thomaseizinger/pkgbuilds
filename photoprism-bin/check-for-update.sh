@@ -36,4 +36,4 @@ git checkout -b "bump-photoprism-$LATEST_RELEASE"
 git commit -a --message "Upgrade photoprism to $LATEST_RELEASE" --author "Update Bot <>"
 git push -f origin "bump-photoprism-$LATEST_RELEASE"
 
-gh pr create --fill --reviewer thomaseizinger
+gh pr create --title "Upgrade photoprism to $LATEST_RELEASE" --body "" --reviewer thomaseizinger
