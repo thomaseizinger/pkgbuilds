@@ -8,7 +8,7 @@ source ./PKGBUILD
 LATEST_RELEASE=$(gh release -R $url view --json tagName --jq '.tagName')
 
 echo "Latest release is $LATEST_RELEASE";
-echo "Current version in AUR is $pkgver-$commit";
+echo "Current version in AUR is $pkgver-$_commit";
 
 # Split LATEST_RELEASE into an array using '-' as the delimiter
 IFS='-' read -r -a DATE_AND_HASH <<< "$LATEST_RELEASE"
@@ -23,7 +23,7 @@ if [ "$RELEASE_DATE" -eq $pkgver ]; then
 fi
 
 sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD
-sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD
+sed -i 's/'${_commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD
 sed -i 's/pkgrel='${pkgrel}'/pkgrel=0/g' ./PKGBUILD
 
 makepkg --nobuild --skipchecksums # Download new files, ignoring checksum because we need to update them.
