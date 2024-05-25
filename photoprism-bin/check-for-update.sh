@@ -20,9 +20,8 @@ if [ $RELEASE_DATE -eq $pkgver ]; then
 	exit 0;
 fi
 
-sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD ./.SRCINFO
-sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD ./.SRCINFO
-sed -i 's/pkgrel = '${pkgrel}'/pkgrel = 0/g' ./.SRCINFO
+sed -i 's/'${pkgver}'/'"$RELEASE_DATE"'/g' ./PKGBUILD
+sed -i 's/'${commit}'/'"$RELEASE_HASH"'/g' ./PKGBUILD
 sed -i 's/pkgrel='${pkgrel}'/pkgrel=0/g' ./PKGBUILD
 
 makepkg --nobuild --skipchecksums # Download new files, ignoring checksum because we need to update them.
