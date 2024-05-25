@@ -15,7 +15,7 @@ jobs:
         token: ${{ secrets.PAT }}
 
     - run: |
-        pacman -Sy --noconfirm base-devel git pacman-contrib github-cli
+        pacman -Sy --noconfirm base-devel git pacman-contrib github-cli python
         ./check-for-update.sh
       working-directory: ./photoprism-bin
       env:
