@@ -29,6 +29,8 @@ makepkg --nobuild --skipchecksums # Download new files, ignoring checksum becaus
 
 updpkgsums # Update checksums
 
+makepkg --printsrcinfo > .SRCINFO # Update .SRCINFO
+
 git config --local user.name "Update Bot"
 git config --local user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
 
