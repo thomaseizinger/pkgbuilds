@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     container: archlinux:latest
     steps:
-    - run: pacman -Sy --noconfirm base-devel git pacman-contrib github-cli python git
+    - run: pacman -Sy --noconfirm base-devel git pacman-contrib github-cli git
     - run: |
         git config --global --add safe.directory /__w/pkgbuilds/pkgbuilds
         git config --global user.name "Update Bot"
