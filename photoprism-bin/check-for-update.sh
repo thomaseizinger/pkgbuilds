@@ -10,12 +10,14 @@ LATEST_RELEASE=$(gh release -R $url view --json tagName --jq '.tagName')
 echo "Latest release is $LATEST_RELEASE";
 echo "Current version in AUR is $pkgver-$commit";
 
-readarray -d '-' -t DATE_AND_HASH<<<"$LATEST_RELEASE"
+# Split LATEST_RELEASE into an array using '-' as the delimiter
+IFS='-' read -r -a DATE_AND_HASH <<< "$LATEST_RELEASE"
 
-RELEASE_DATE=$(python -c 'print("'"$LATEST_RELEASE"'".split("-")[0])')
-RELEASE_HASH=$(python -c 'print("'"$LATEST_RELEASE"'".split("-")[1])')
+# Extract the release date and hash from the array
+RELEASE_DATE=${DATE_AND_HASH[0]}
+RELEASE_HASH=${DATE_AND_HASH[1]}
 
-if [ $RELEASE_DATE -eq $pkgver ]; then
+if [ "$RELEASE_DATE" -eq $pkgver ]; then
 	echo "$LATEST_RELEASE is the latest version"
 	exit 0;
 fi
