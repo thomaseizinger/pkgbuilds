@@ -29,7 +29,7 @@ makepkg --nobuild --skipchecksums # Download new files, ignoring checksum becaus
 
 updpkgsums # Update checksums
 
-git checkout --branch "bump-photoprism-$LATEST_RELEASE"
+git checkout -b "bump-photoprism-$LATEST_RELEASE"
 git commit --amend --message "Upgrade photoprism to $LATEST_RELEASE" --author "Update Bot <133871599+thomas-pkgbuild-dependabot@users.noreply.github.com>"
 git push --force origin "bump-photoprism-$LATEST_RELEASE"
 
