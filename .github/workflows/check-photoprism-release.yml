@@ -22,7 +22,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
 
-    - uses: heyhusen/archlinux-package-action@v2
+    - uses: heyhusen/archlinux-package-action@v2.2.1
       with:
         pkgver: ${{ steps.new-release.outputs.version }}
         pkgrel: 0
