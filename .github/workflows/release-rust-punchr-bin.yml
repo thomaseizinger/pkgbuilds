@@ -20,7 +20,7 @@ jobs:
         pkgdir: ./rust-punchr-bin
 
     - name: Publish AUR package
-      uses: KSXGitHub/github-actions-deploy-aur@v2.7.1
+      uses: KSXGitHub/github-actions-deploy-aur@v2.7.2
       with:
         pkgname: rust-punchr-bin
         pkgbuild: rust-punchr-bin/PKGBUILD
