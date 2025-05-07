@@ -12,7 +12,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/photoprism/photoprism"
 license=('AGPL-3.0-only')
 groups=()
-depends=(icu glib2 glibc gcc-libs libvips)
+depends=(icu glib2 glibc gcc-libs libvips tensorflow)
 makedepends=()
 checkdepends=()
 optdepends=("darktable: for RAW to JPEG conversion"
@@ -59,8 +59,6 @@ package() {
 	mkdir -p "$pkgdir/var/lib/photoprism/"
 
 	install -Dm 0755 ./bin/photoprism "$pkgdir/usr/bin/photoprism"
-	install -Dm 0755 ./lib/libtensorflow.so "$pkgdir/usr/lib/libtensorflow.so"
-	install -Dm 0755 ./lib/libtensorflow_framework.so "$pkgdir/usr/lib/libtensorflow_framework.so"
 	cp -r ./assets/ "$pkgdir/var/lib/photoprism/"
 
 	find "$pkgdir/var/lib/photoprism/assets/" -type d -exec chmod +x {} \;

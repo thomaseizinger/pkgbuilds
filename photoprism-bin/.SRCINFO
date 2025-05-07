@@ -11,6 +11,7 @@ pkgbase = photoprism-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = libvips
+	depends = tensorflow
 	optdepends = darktable: for RAW to JPEG conversion
 	optdepends = rawtherapee: for RAW to JPEG conversion
 	optdepends = libheif: for HEIC/HEIF image conversion
