@@ -16,7 +16,7 @@ jobs:
         git config --global user.name "Update Bot"
         git config --global user.email "133871599+thomas-pkgbuild-dependabot@users.noreply.github.com"
 
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         token: ${{ secrets.PAT }}
 
