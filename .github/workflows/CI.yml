@@ -10,7 +10,7 @@ jobs:
         package: [photoprism-bin, rust-punchr-bin]
       fail-fast: false
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Makepkg Build and Check
       uses: edlanglois/pkgbuild-action@v1
